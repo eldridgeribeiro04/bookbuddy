@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{user.username}} | {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Welcome, {{user.username}}!</h2>
+        <br>
+        <p>Your goal for this month:</p>
+        <p>5 books</p>
+        <br>
+        <p>Books you are currently reading</p>
+        <!-- add upto last 5 books thats not marked read -->
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "core/base.html" %}
+
+{% block title %} Signup | {% endblock %}
+
+{% block content %}
+
+<style>
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+  
+    .form-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 350px;
+      height: 450px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+  
+    .form-group{
+      text-align: center;
+      width: 70%;
+      margin-bottom: 1%;
+    }
+  
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+  
+  
+  <div class="center-container">
+    <div class="form-wrapper">
+  
+  
+      <form method="post">
+        {% csrf_token %}
+  
+          <div class="form-group">
+          <h3>Sign Up</h3>
+          </div>
+  
+          <div class="form-group">
+            <label for="id_username">Username:</label>
+            {{form.username}}
+            <!-- Display errors for username field -->
+            {% if form.username.errors %}
+            <p class="error-message">{{ form.username.errors }}</p>
+            {% endif %}
+          </div>
+  
+          <div class="form-group">
+            <label for="id_first_name">First name:</label>
+            {{form.first_name}}
+            {% if form.first_name.errors %}
+            <p class="error-message">{{form.first_name.errors}}</p>
+            {% endif %}
+          </div>
+  
+          <div class="form-group">
+            <label for="id_last_name">Last name:</label>
+            {{form.last_name}}
+            {% if form.last_name.errors %}
+            <p class="error-message">{{form.last_name.errors}}</p>
+            {% endif %}
+          </div>
+  
+          <div class="form-group">
+            <label for="id_email">Email address:</label>
+            {{form.email}}
+            {% if form.email.errors %}
+            <p class="error-message">{{form.email.errors}}</p>
+            {% endif %}
+          </div>
+  
+          <div class="form-group">
+            <label for="id_password1">Password:</label>
+            {{form.password1}}
+            {% if form.password1.errors %}
+            <p class="error-message">{{form.password1.errors}}</p>
+            {% endif %}
+          </div>
+  
+          <div class="form-group">
+            <label for="id_password2">Confirm password:</label>
+            {{form.password2}}
+            {% if form.password2.errors %}
+            <p class="error-message">{{form.password2.errors}}</p>
+            {% endif %}
+          </div>
+  
+          <div class="form-group">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+  
+      </form>
+  
+    </div>
+  </div>
+
+{% endblock %}

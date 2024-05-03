@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Update details | {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+</div>
+</div>
+
+{% endblock %}
