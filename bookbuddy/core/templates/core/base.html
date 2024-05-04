@@ -38,7 +38,7 @@
                 <ul class="dropdown-menu">
 
                     <li><a href="{% url 'accounts:profile' %}">View profile</a></li>
-                    <li><a href="">Add new book</a></li>
+                    <li><a href="{% url 'core:add_book' %}">Add new book</a></li>
                     <li><a href="{% url 'accounts:update' %}">Change details</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
 
@@ -47,8 +47,6 @@
             </ul>
         </div>
     </nav>
-
-
 
     <div class="container">
         {% block content %}

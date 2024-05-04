@@ -44,8 +44,8 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ("username", "email", "first_name", "last_name")
 
-    def clean_password(self):
-        old_password = self.cleaned_data.get('old_password')
-        if not self.instance.check_password(old_password):
-            raise forms.ValidationError("Incorrect old password")
-        return old_password
+    # def clean_password(self):
+    #     password = self.cleaned_data.get('assword')
+    #     if not self.instance.check_password(password):
+    #         raise forms.ValidationError("Incorrect password")
+    #     return password
