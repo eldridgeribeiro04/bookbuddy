@@ -9,14 +9,23 @@ class CategoryChoiceField(forms.CharField):
         self.choices = ['Fiction', 'Non-Fiction', 'Science Fiction', 'Fantasy', 'Mystery']
 
     def clean(self, value):
-        if value not in self.choices:
+        value = value.strip()
+        if value:
             return value
-        return super().clean(value)
-    
+        else:
+            raise forms.ValidationError("This field is required")    
 
 class BookForm(forms.ModelForm):
-    category = CategoryChoiceField()
+    category = CategoryChoiceField(label="Category")
+    goal_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))
 
     class Meta:
         model = models.Book
         fields = ['title', 'author', 'category', 'book_img', 'goal_date']
+
+
+class Completed(forms.ModelForm):
+
+    class Meta:
+        model = models.Book
+        fields = ['completed']
